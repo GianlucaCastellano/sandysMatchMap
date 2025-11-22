@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
@@ -7,13 +5,13 @@ module.exports = {
   development: {
     client: "pg",
     connection: {
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
+      host: "localhost",
+      user: "postgres",
+      password: "password123",
+      database: "matchmap",
     },
     migrations: {
-      directory: "./migrations",
+      directory: "./migrations/migrations",
     },
     seeds: {
       directory: "./seeds",

@@ -56,16 +56,48 @@ exports.up = function (knex) {
         .onDelete("CASCADE");
       table.boolean("result").notNullable();
     })
-    .createTable("matching_nights", table => {
-        table.uuid("id").primary().defaultTo(knex.raw("gen_random_uuid()"));
-        table.integer("week").notNullable();
-        table.integer("beams");
+    .createTable("matching_nights", (table) => {
+      table.uuid("id").primary().defaultTo(knex.raw("gen_random_uuid()"));
+      table.integer("week").notNullable();
+      table.integer("beams");
     })
-    .createTable()
+    .createTable("matching_picks", (table) => {
+      table.uuid("id").primary().defaultTo(knex.raw("gen_random_uuid()"));
+      table
+        .uuid("matching_nights_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("matching_nights")
+        .onDelete("CASCADE");
+      +table
+        .uuid("girls_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("girls")
+        .onDelete("CASCADE");
+      table
+        .uuid("boys_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("boys")
+        .onDelete("CASCADE");
+      table.unique(["matching_nights_id", "girls_id", "boys_id"]);
+    });
 };
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.down = function (knex) {};
+exports.down = function (knex) {
+  return knex.schema
+    .dropTable("matching_picks")
+    .dropTable("matching_nights")
+    .dropTable("matchbox")
+    .dropTable("matches")
+    .dropTable("boys")
+    .dropTable("girls");
+};
