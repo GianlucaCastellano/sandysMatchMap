@@ -5,8 +5,8 @@ const girlsRouter = require("./girlsRouter");
 const boysRouter = require("./boysRouter");
 const matchesRouter = require("./matchesRouter");
 const matchboxRouter = require("./matchboxRouter");
-const matchingNightsRouter = require("./matching_nightsRouter");
-const matchingPicksRouter = require("./matching_picksRouter");
+const matchingNightsRouter = require("./matchingNightsRouter");
+const matchingPicksRouter = require("./matchingPicksRouter");
 
 router.use("/girls", girlsRouter);
 router.use("/boys", boysRouter);
