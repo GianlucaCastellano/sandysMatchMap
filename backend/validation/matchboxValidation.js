@@ -12,5 +12,8 @@ const matchboxSchema = Joi.object({
     "any.required": "girlId ist erforderlich",
   }),
 
-  result: Joi.boolean()
+  result: Joi.boolean().required().messages({
+    "boolean.base": "result muss true oder false sein",
+    "any.required": "result ist erforderlich",
+  }),
 });
