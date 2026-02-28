@@ -1,5 +1,6 @@
 const express = require("express");
 const routes = require("./routes/allRoutes");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
@@ -12,9 +13,6 @@ app.use((req, res) => {
   res.status(404).json({ error: "Not Found" });
 });
 
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ error: "Server Error" });
-});
+app.use(errorHandler);
 
 app.listen(8080, () => console.log("Server läuft auf Port 8080"));
