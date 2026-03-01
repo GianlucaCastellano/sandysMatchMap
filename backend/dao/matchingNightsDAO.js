@@ -22,7 +22,7 @@ async function getAllMatchingNights() {
     return {
       id: night.id,
       week: night.week,
-      lights: night.beams,
+      beams: night.beams,
       seating: seating,
     };
   });
