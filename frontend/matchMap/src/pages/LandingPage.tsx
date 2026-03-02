@@ -5,6 +5,7 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 // --- ULTRA FAST DRAMATIC COUNTER ---
 const DramaticCounter: React.FC<{ to: number; onComplete: () => void }> = ({
@@ -33,6 +34,7 @@ const DramaticCounter: React.FC<{ to: number; onComplete: () => void }> = ({
 
 const LandingPage: React.FC = () => {
   const [isReady, setIsReady] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="relative min-h-screen w-full bg-[#020205] text-white overflow-hidden font-sans">
@@ -150,7 +152,10 @@ const LandingPage: React.FC = () => {
                 transition={{ delay: 0.3 }}
                 className="flex flex-col items-center gap-10"
               >
-                <button className="relative group px-20 py-6 bg-white overflow-hidden skew-x-[-15deg] transition-transform hover:scale-105 active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.2)]">
+                <button
+                  onClick={() => navigate("/dashboard")}
+                  className="relative group px-20 py-6 bg-white overflow-hidden skew-x-[-15deg] transition-transform hover:scale-105 active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.2)]"
+                >
                   <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-blue-600 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
                   <span className="relative z-10 text-black group-hover:text-white font-black text-2xl uppercase italic tracking-[0.2em] transition-colors">
                     Crack the Matrix
