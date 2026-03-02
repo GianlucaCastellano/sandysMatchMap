@@ -190,7 +190,7 @@ const HeatmapCell: React.FC<{
         <motion.div
           animate={{ x: ["-100%", "100%"] }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 pointer-events-none"
+          className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -skew-x-12 pointer-events-none"
         />
       )}
     </motion.td>
