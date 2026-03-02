@@ -58,7 +58,7 @@ const LandingPage: React.FC = () => {
               },
               opacity: { duration: 2, repeat: Infinity },
             }}
-            className="w-[2px] h-[150%] origin-top blur-[2px] shadow-[0_0_20px_rgba(6,182,212,0.5)]"
+            className="w-0.5 h-[150%] origin-top blur-[2px] shadow-[0_0_20px_rgba(6,182,212,0.5)]"
           />
         ))}
       </div>
@@ -86,7 +86,7 @@ const LandingPage: React.FC = () => {
           <span className="text-[10px] tracking-[0.8em] uppercase text-white/30 mb-2">
             Presented by
           </span>
-          <h2 className="text-xl font-black italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-white/50 to-white">
+          <h2 className="text-xl font-black italic tracking-widest text-transparent bg-clip-text bg-linear-to-r from-white via-white/50 to-white">
             SANDYS<span className="text-pink-500">MATCHMAP</span>
           </h2>
         </motion.div>
@@ -137,7 +137,7 @@ const LandingPage: React.FC = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute inset-0 bg-gradient-to-r from-pink-500/20 via-yellow-500/20 to-cyan-500/20 blur-[120px] -z-10"
+              className="absolute inset-0 bg-linear-to-r from-pink-500/20 via-yellow-500/20 to-cyan-500/20 blur-[120px] -z-10"
             />
           )}
         </motion.div>
@@ -156,7 +156,7 @@ const LandingPage: React.FC = () => {
                   onClick={() => navigate("/dashboard")}
                   className="relative group px-20 py-6 bg-white overflow-hidden skew-x-[-15deg] transition-transform hover:scale-105 active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.2)]"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-blue-600 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-linear-to-r from-pink-500 to-blue-600 translate-x- group-hover:translate-x-0 transition-transform duration-500" />
                   <span className="relative z-10 text-black group-hover:text-white font-black text-2xl uppercase italic tracking-[0.2em] transition-colors">
                     Crack the Matrix
                   </span>

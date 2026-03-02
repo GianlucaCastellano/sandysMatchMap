@@ -68,7 +68,7 @@ const Heatmap: React.FC = () => {
                   {GIRLS[hoveredCell.g]}
                 </p>
               </div>
-              <div className="h-8 w-[1px] bg-white/10" />
+              <div className="h-8 w-px bg-white/10" />
               <div className="text-3xl font-black italic text-cyan-400">
                 {matrixData[hoveredCell.b][hoveredCell.g]}%
               </div>
@@ -78,7 +78,7 @@ const Heatmap: React.FC = () => {
       </div>
 
       <div className="overflow-x-auto custom-scrollbar">
-        <table className="table-fixed border-separate border-spacing-2 w-full min-w-[1000px]">
+        <table className="table-fixed border-separate border-spacing-2 w-full min-w-250">
           <thead>
             <tr>
               <th className="w-32"></th>

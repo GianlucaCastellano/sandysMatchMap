@@ -34,7 +34,7 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
 
         <div className="mt-auto px-8">
-          <div className="p-4 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20">
+          <div className="p-4 rounded-2xl bg-linear-to-br from-cyan-500/10 to-transparent border border-cyan-500/20">
             <p className="text-[10px] font-black text-cyan-400 uppercase tracking-widest mb-1">
               Live Engine
             </p>
@@ -49,8 +49,8 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <main className="flex-1 flex flex-col relative overflow-hidden">
         {/* Background Beams */}
         <div className="absolute inset-0 pointer-events-none opacity-20">
-          <div className="absolute top-0 left-1/3 w-[1px] h-full bg-cyan-400 blur-[2px] animate-pulse" />
-          <div className="absolute top-0 right-1/4 w-[1px] h-full bg-pink-500 blur-[2px] animate-pulse delay-1000" />
+          <div className="absolute top-0 left-1/3 w-px h-full bg-cyan-400 blur-[2px] animate-pulse" />
+          <div className="absolute top-0 right-1/4 w-px h-full bg-pink-500 blur-[2px] animate-pulse delay-1000" />
         </div>
 
         {/* TOP NAVIGATION / STATS */}
@@ -71,7 +71,7 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               </p>
               <p className="text-2xl font-black text-pink-500 italic">2 / 10</p>
             </div>
-            <div className="w-[1px] h-10 bg-white/10" />
+            <div className="w-px h-10 bg-white/10" />
             <button className="bg-white text-black px-8 py-3 rounded-lg font-black uppercase italic tracking-tighter hover:bg-cyan-400 transition-colors">
               Simulate
             </button>
