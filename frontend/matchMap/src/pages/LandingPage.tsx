@@ -7,7 +7,6 @@ import {
 } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-// --- ULTRA FAST DRAMATIC COUNTER ---
 const DramaticCounter: React.FC<{ to: number; onComplete: () => void }> = ({
   to,
   onComplete,
@@ -18,7 +17,6 @@ const DramaticCounter: React.FC<{ to: number; onComplete: () => void }> = ({
   );
 
   useEffect(() => {
-    // Kurze Verzögerung für den Fokus, dann High-Speed-Lauf
     const t = setTimeout(() => spring.set(to), 500);
     const unsub = spring.on("change", (latest) => {
       if (latest >= to) onComplete();
@@ -38,7 +36,6 @@ const LandingPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen w-full bg-[#020205] text-white overflow-hidden font-sans">
-      {/* 1. DYNAMISCHE BEAMS (Bewegen sich wie Studio-Lights) */}
       <div className="absolute inset-0 flex justify-around pointer-events-none">
         {[...Array(8)].map((_, i) => (
           <motion.div
@@ -46,7 +43,7 @@ const LandingPage: React.FC = () => {
             initial={{ opacity: 0, rotate: -20 }}
             animate={{
               opacity: isReady ? [0.2, 0.6, 0.2] : 0.2,
-              rotate: [-15, 15, -15], // Sweeping Motion
+              rotate: [-15, 15, -15],
               backgroundColor: isReady ? "#d946ef" : "#06b6d4",
             }}
             transition={{
@@ -63,7 +60,6 @@ const LandingPage: React.FC = () => {
         ))}
       </div>
 
-      {/* 2. THE BIG REVEAL FLASH */}
       <AnimatePresence>
         {isReady && (
           <motion.div
@@ -75,9 +71,7 @@ const LandingPage: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* 3. MAIN STAGE */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
-        {/* Logo oben - Dezent aber Glamourös */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -91,7 +85,6 @@ const LandingPage: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* Branding: ARE YOU THE ONE (Erscheint beim Impact) */}
         <div className="h-20 mb-4 overflow-hidden">
           <AnimatePresence>
             {isReady && (
@@ -107,7 +100,6 @@ const LandingPage: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        {/* --- CENTRAL JACKPOT (Kein Kasten, Pure Light) --- */}
         <motion.div
           animate={isReady ? { scale: [1, 1.05, 1] } : {}}
           transition={{ duration: 0.3 }}
@@ -131,8 +123,6 @@ const LandingPage: React.FC = () => {
               />
             </span>
           </h3>
-
-          {/* Glühende Aura unter der Zahl nach dem Load */}
           {isReady && (
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
@@ -142,7 +132,6 @@ const LandingPage: React.FC = () => {
           )}
         </motion.div>
 
-        {/* 4. FINAL ACTIONS (Erscheinen nach dem Blitz) */}
         <div className="h-32 mt-12 flex flex-col items-center">
           <AnimatePresence>
             {isReady && (
@@ -171,7 +160,6 @@ const LandingPage: React.FC = () => {
         </div>
       </div>
 
-      {/* VIGNETTE */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.8)_100%)]" />
     </div>
   );

@@ -6,7 +6,6 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-[#020205] text-white font-sans flex overflow-hidden">
-      {/* SIDEBAR */}
       <nav className="w-20 md:w-72 border-r border-white/5 flex flex-col py-10 bg-black/40 backdrop-blur-2xl z-50">
         <div className="px-8 mb-12">
           <h2 className="text-xl font-black italic tracking-tighter uppercase">
@@ -45,15 +44,12 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
       </nav>
 
-      {/* MAIN CONTENT AREA */}
       <main className="flex-1 flex flex-col relative overflow-hidden">
-        {/* Background Beams */}
         <div className="absolute inset-0 pointer-events-none opacity-20">
           <div className="absolute top-0 left-1/3 w-px h-full bg-cyan-400 blur-[2px] animate-pulse" />
           <div className="absolute top-0 right-1/4 w-px h-full bg-pink-500 blur-[2px] animate-pulse delay-1000" />
         </div>
 
-        {/* TOP NAVIGATION / STATS */}
         <header className="px-10 py-8 flex justify-between items-center bg-black/20 border-b border-white/5 backdrop-blur-md z-10">
           <div>
             <h1 className="text-3xl font-black italic tracking-tighter uppercase leading-none">
@@ -78,7 +74,6 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
         </header>
 
-        {/* INSERT CONTENT HERE */}
         <div className="flex-1 relative overflow-y-auto p-10">{children}</div>
       </main>
     </div>

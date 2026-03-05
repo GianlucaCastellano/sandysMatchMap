@@ -32,7 +32,6 @@ const Heatmap: React.FC = () => {
     g: number;
   } | null>(null);
 
-  // Matrix Daten (Simuliert)
   const [matrixData] = useState(() =>
     BOYS.map((_, b) =>
       GIRLS.map((_, g) => {
@@ -49,7 +48,6 @@ const Heatmap: React.FC = () => {
 
   return (
     <div className="relative bg-[#05050a] border border-white/10 rounded-[2.5rem] p-8 shadow-2xl">
-      {/* 1. FLOATING PREVIEW (Oben Rechts) */}
       <div className="absolute top-6 right-10 z-50 h-16 pointer-events-none">
         <AnimatePresence>
           {hoveredCell && (
@@ -107,7 +105,6 @@ const Heatmap: React.FC = () => {
           <tbody>
             {BOYS.map((boy, bIndex) => (
               <tr key={boy}>
-                {/* Mann Name (Linke Spalte) */}
                 <td className="text-right pr-6 h-16">
                   <motion.span
                     animate={{
@@ -144,7 +141,6 @@ const Heatmap: React.FC = () => {
   );
 };
 
-// --- EINZELNE ZELLE ---
 const HeatmapCell: React.FC<{
   prob: number;
   onHover: () => void;
@@ -185,7 +181,6 @@ const HeatmapCell: React.FC<{
         </span>
       </div>
 
-      {/* Subtiler Glow-Streifen für Perfect Matches */}
       {isMatch && count > 95 && (
         <motion.div
           animate={{ x: ["-100%", "100%"] }}
