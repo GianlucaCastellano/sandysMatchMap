@@ -12,8 +12,8 @@ import LandingPage from "./pages/LandingPage";
 import Dashboard from "./pages/Dashboard";
 import Heatmap from "./components/Heatmap";
 import StarsPage from "./pages/StarPage";
+import MatchingHistory from "./pages/MatchingHistory";
 
-// Platzhalter für zukünftige Seiten, damit die App nicht crasht
 const Placeholder = ({ title }: { title: string }) => (
   <div className="flex items-center justify-center h-64 border-2 border-dashed border-white/5 rounded-[2rem]">
     <p className="text-white/20 font-black uppercase tracking-[0.5em]">
@@ -37,7 +37,6 @@ const AnimatedRoutes = ({
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        {/* LANDING PAGE */}
         <Route
           path="/"
           element={
@@ -47,7 +46,6 @@ const AnimatedRoutes = ({
           }
         />
 
-        {/* MATRIX / DASHBOARD */}
         <Route
           path="/dashboard"
           element={
@@ -57,7 +55,6 @@ const AnimatedRoutes = ({
           }
         />
 
-        {/* STARS DATABASE */}
         <Route
           path="/stars"
           element={
@@ -67,17 +64,15 @@ const AnimatedRoutes = ({
           }
         />
 
-        {/* HISTORY (Zukünftig) */}
         <Route
           path="/history"
           element={
             <Dashboard>
-              <Placeholder title="Matching History" />
+              <MatchingHistory />
             </Dashboard>
           }
         />
 
-        {/* ADMIN (Zukünftig) */}
         <Route
           path="/admin"
           element={
@@ -96,11 +91,9 @@ const App: React.FC = () => {
   const [matrixData, setMatrixData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // Daten vom Backend laden
   const loadData = async () => {
     try {
       setLoading(true);
-      // Wichtig: Hier ggf. den Proxy oder die volle URL nutzen (CORS!)
       const response = await fetch(
         "http://localhost:8080/probabilities/calculate",
       );
@@ -110,7 +103,7 @@ const App: React.FC = () => {
         setMatrixData(result.data.boysView);
       }
     } catch (error) {
-      console.error("Fehler beim Abrufen der Matrix:", error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -122,16 +115,13 @@ const App: React.FC = () => {
 
   const triggerFlash = (navCallback: () => void) => {
     setIsFlashActive(true);
-    // Schneller Flash-In
     setTimeout(navCallback, 100);
-    // Flash-Out
     setTimeout(() => setIsFlashActive(false), 500);
   };
 
   return (
     <Router>
       <div className="relative min-h-screen bg-[#020205] overflow-hidden">
-        {/* GLOBALER ÜBERGANGS-BLITZ */}
         <AnimatePresence>
           {isFlashActive && (
             <motion.div

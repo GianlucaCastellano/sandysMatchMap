@@ -18,7 +18,6 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-[#020205] text-white font-sans flex overflow-hidden">
-      {/* --- SIDEBAR --- */}
       <nav className="w-20 md:w-72 border-r border-white/5 flex flex-col py-10 bg-black/40 backdrop-blur-2xl z-50">
         <div className="px-8 mb-12">
           <Link to="/" className="group block">
@@ -42,7 +41,7 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   className="absolute inset-0 border border-white/10 rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.05)]"
                 />
               )}
-              <span className="relative z-10">{tab.id}</span>
+              <span className="relative z-10">{tab.label}</span>
             </button>
           ))}
         </div>
@@ -59,7 +58,6 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
       </nav>
 
-      {/* --- MAIN CONTENT --- */}
       <main className="flex-1 flex flex-col relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-20">
           <div className="absolute top-0 left-1/3 w-px h-full bg-cyan-400 blur-[2px] animate-pulse" />
@@ -90,7 +88,7 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
         </header>
 
-        <div className="flex-1 relative overflow-y-auto p-10 custom-scrollbar">
+        <div className="flex-1 relative overflow-y-auto p-10 custom-scrollbar overflow-x-hidden">
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 10 }}
