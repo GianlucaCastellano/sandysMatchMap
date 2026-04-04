@@ -10,17 +10,18 @@ const DramaticCounter: React.FC<{ to: number; onComplete: () => void }> = ({
   to,
   onComplete,
 }) => {
-  const spring = useSpring(0, { stiffness: 35, damping: 15 });
+  const spring = useSpring(0, { stiffness: 25, damping: 20 });
   const display = useTransform(spring, (value) =>
     Math.floor(value).toLocaleString("de-DE"),
   );
 
   useEffect(() => {
-    const t = setTimeout(() => spring.set(to), 500);
+    const t = setTimeout(() => spring.set(to), 800);
 
     const unsub = spring.on("change", (latest) => {
-      if (latest >= to - 50) onComplete();
+      if (latest >= to * 0.99) onComplete();
     });
+
     return () => {
       clearTimeout(t);
       unsub();
@@ -30,16 +31,31 @@ const DramaticCounter: React.FC<{ to: number; onComplete: () => void }> = ({
   return <motion.span>{display}</motion.span>;
 };
 
-const fetchMoneyCounter = async () => {
-  const money 
-};
-
 interface LandingPageProps {
   onStart: () => void;
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
   const [isReady, setIsReady] = useState(false);
+  const [prizePool, setPrizePool] = useState<number | null>(null);
+
+  useEffect(() => {
+    const loadMoney = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8080/matching_nights/money",
+        );
+        if (!response.ok) throw new Error("Network error");
+        const data = await response.json();
+
+        setPrizePool(data.money || 0);
+      } catch (err) {
+        console.error("Money Fetch failed, using fallback", err);
+        setPrizePool(200000);
+      }
+    };
+    loadMoney();
+  }, []);
 
   return (
     <div className="relative min-h-screen w-full bg-[#020205] text-white overflow-hidden font-sans flex flex-col items-center justify-center">
@@ -49,7 +65,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
             key={i}
             initial={{ opacity: 0, rotate: -20 }}
             animate={{
-              opacity: isReady ? [0.1, 0.4, 0.1] : 0.1,
+              opacity: isReady ? [0.1, 0.4, 0.1] : 0.05,
               rotate: [-15, 15, -15],
               backgroundColor: isReady ? "#d946ef" : "#06b6d4",
             }}
@@ -71,8 +87,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
         {isReady && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.6, 0] }}
-            transition={{ duration: 0.5 }}
+            animate={{ opacity: [0, 0.4, 0] }}
+            transition={{ duration: 0.6 }}
             className="absolute inset-0 bg-white z-40 pointer-events-none"
           />
         )}
@@ -82,7 +98,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute -top-30 flex flex-col items-center"
+          className="absolute -top-32 flex flex-col items-center"
         >
           <span className="text-[9px] tracking-[1em] uppercase text-white/20 mb-3">
             Strategy Engine
@@ -119,15 +135,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
             Potential Prize Pool
           </motion.p>
 
-          <h3 className="text-[22vw] md:text-[14rem] font-black leading-none tracking-tighter italic flex items-center justify-center select-none">
+          <h3 className="text-[18vw] md:text-[12rem] font-black leading-none tracking-tighter italic flex items-center justify-center select-none">
             <span className="text-yellow-500 mr-4 drop-shadow-[0_0_35px_rgba(234,179,8,0.5)]">
               €
             </span>
             <span className="text-white drop-shadow-[0_0_60px_rgba(255,255,255,0.15)]">
-              <DramaticCounter
-                to={200000}
-                onComplete={() => setIsReady(true)}
-              />
+              {prizePool !== null ? (
+                <DramaticCounter
+                  to={prizePool}
+                  onComplete={() => setIsReady(true)}
+                />
+              ) : (
+                "0"
+              )}
             </span>
           </h3>
 
@@ -154,7 +174,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                   className="relative group px-24 py-7 bg-white overflow-hidden skew-x-[-15deg] transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.15)]"
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-blue-600 via-purple-600 to-pink-500 translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
-
                   <span className="relative z-10 text-black group-hover:text-white font-black text-2xl uppercase italic tracking-[0.15em] transition-colors">
                     Crack the Matrix
                   </span>
@@ -173,7 +192,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
       </div>
 
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.85)_100%)]" />
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.3)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size[length:100%_3px,4px_100%]" />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.3)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_3px,4px_100%]" />
     </div>
   );
 };
