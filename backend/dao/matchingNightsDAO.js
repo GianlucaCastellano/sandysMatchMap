@@ -50,10 +50,23 @@ async function deleteMatchingNight(id) {
   return db("matching_nights").where({ id }).del();
 }
 
+async function getMoneyByWeek(week) {
+  return db("matching_nights").where({ week }).select("money");
+}
+
+async function getLatestMoney() {
+  return await db("matching_nights")
+    .select("week", "money")
+    .orderBy("week", "desc")
+    .first();
+}
+
 module.exports = {
   getAllMatchingNights,
   getMatchingNightById,
   createMatchingNight,
   updateMatchingNight,
   deleteMatchingNight,
+  getMoneyByWeek,
+  getLatestMoney,
 };

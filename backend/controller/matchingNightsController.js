@@ -12,7 +12,7 @@ async function getAllMatchingNights(req, res, next) {
 async function getMatchingNightById(req, res, next) {
   try {
     const matchingNight = await matchingNightsDAO.getMatchingNightById(
-      req.params.id
+      req.params.id,
     );
     if (!matchingNight) throw new Error("Matching Night nicht gefunden");
     res.json(matchingNight);
@@ -40,7 +40,7 @@ async function updateMatchingNight(req, res, next) {
   try {
     const updated = await matchingNightsDAO.updateMatchingNight(
       req.params.id,
-      req.body
+      req.body,
     );
     if (!updated) throw new Error("Matching Night existiert nicht");
     res.json(updated);
@@ -59,10 +59,31 @@ async function deleteMatchingNight(req, res, next) {
   }
 }
 
+async function getMoneyByWeek(req, res, next) {
+  try {
+    const money = await matchingNightsDAO.getMoneyByWeek(req.params.week);
+    if (!money) throw new Error("Woche konnte nicht gefunden werden");
+    res.status(201).json(money);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getLatestMoney(req, res, next) {
+  try {
+    const money = await matchingNightsDAO.getLatestMoney();
+    if (!money) throw new Error("Money konnte nicht gefunden werden");
+    res.status(201).json(money);
+  } catch (error) {
+    next(error);
+  }
+}
 module.exports = {
   getAllMatchingNights,
   getMatchingNightById,
   createMatchingNight,
   updateMatchingNight,
   deleteMatchingNight,
+  getMoneyByWeek,
+  getLatestMoney,
 };

@@ -60,6 +60,7 @@ exports.up = function (knex) {
       table.uuid("id").primary().defaultTo(knex.raw("gen_random_uuid()"));
       table.integer("week").notNullable();
       table.integer("beams");
+      table.integer("money");
     })
     .createTable("matching_picks", (table) => {
       table.uuid("id").primary().defaultTo(knex.raw("gen_random_uuid()"));

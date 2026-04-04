@@ -45,17 +45,6 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </button>
           ))}
         </div>
-
-        <div className="mt-auto px-8">
-          <div className="p-4 rounded-2xl bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/20">
-            <p className="text-[10px] font-black text-cyan-400 uppercase tracking-widest mb-1">
-              Live Engine
-            </p>
-            <p className="text-[9px] text-white/40 leading-relaxed">
-              Processing 75k scenarios for Sandra...
-            </p>
-          </div>
-        </div>
       </nav>
 
       <main className="flex-1 flex flex-col relative overflow-hidden">

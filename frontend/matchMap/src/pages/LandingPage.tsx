@@ -30,6 +30,10 @@ const DramaticCounter: React.FC<{ to: number; onComplete: () => void }> = ({
   return <motion.span>{display}</motion.span>;
 };
 
+const fetchMoneyCounter = async () => {
+  const money 
+};
+
 interface LandingPageProps {
   onStart: () => void;
 }
@@ -58,7 +62,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
               },
               opacity: { duration: 3, repeat: Infinity },
             }}
-            className="w-[1px] h-[150%] origin-top blur-[3px] shadow-[0_0_25px_rgba(6,182,212,0.3)]"
+            className="w-px h-[150%] origin-top blur-[3px] shadow-[0_0_25px_rgba(6,182,212,0.3)]"
           />
         ))}
       </div>
@@ -78,12 +82,12 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-[-120px] flex flex-col items-center"
+          className="absolute -top-30 flex flex-col items-center"
         >
           <span className="text-[9px] tracking-[1em] uppercase text-white/20 mb-3">
             Strategy Engine
           </span>
-          <h2 className="text-xl font-black italic tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-white/40 to-white uppercase">
+          <h2 className="text-xl font-black italic tracking-widest text-transparent bg-clip-text bg-linear-to-r from-white via-white/40 to-white uppercase">
             Sandys<span className="text-pink-500">Matchmap</span>
           </h2>
         </motion.div>
@@ -131,7 +135,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="absolute inset-0 bg-gradient-to-r from-pink-600/10 via-yellow-500/10 to-cyan-500/10 blur-[140px] -z-10"
+              className="absolute inset-0 bg-linear-to-r from-pink-600/10 via-yellow-500/10 to-cyan-500/10 blur-[140px] -z-10"
             />
           )}
         </motion.div>
@@ -149,7 +153,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                   onClick={onStart}
                   className="relative group px-24 py-7 bg-white overflow-hidden skew-x-[-15deg] transition-all hover:scale-105 active:scale-95 shadow-[0_0_40px_rgba(255,255,255,0.15)]"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+                  <div className="absolute inset-0 bg-linear-to-r from-blue-600 via-purple-600 to-pink-500 translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
 
                   <span className="relative z-10 text-black group-hover:text-white font-black text-2xl uppercase italic tracking-[0.15em] transition-colors">
                     Crack the Matrix
@@ -169,7 +173,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
       </div>
 
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.85)_100%)]" />
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.3)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_3px,4px_100%]" />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.3)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size[length:100%_3px,4px_100%]" />
     </div>
   );
 };

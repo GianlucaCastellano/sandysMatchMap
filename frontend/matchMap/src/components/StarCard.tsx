@@ -23,9 +23,9 @@ const StarCard: React.FC<StarCardProps> = ({ star, onClick }) => {
       transition={{ duration: 0.3 }}
       whileHover={{ y: -8 }}
       onClick={onClick}
-      className="group relative bg-white/[0.03] border border-white/5 rounded-[2.5rem] overflow-hidden p-5 transition-colors hover:bg-white/[0.06] cursor-pointer"
+      className="group relative bg-white/13 border border-white/5 rounded-[2.5rem] overflow-hidden p-5 transition-colors hover:bg-white/6 cursor-pointer"
     >
-      <div className="aspect-[4/5] rounded-[2rem] mb-5 relative bg-[#0a0a0f] overflow-hidden shadow-inner border border-white/5">
+      <div className="aspect-4/5 rounded-4xl mb-5 relative bg-[#0a0a0f] overflow-hidden shadow-inner border border-white/5">
         {star.image_url ? (
           <img
             src={star.image_url}
@@ -35,7 +35,7 @@ const StarCard: React.FC<StarCardProps> = ({ star, onClick }) => {
         ) : (
           <>
             <div
-              className={`absolute inset-0 opacity-10 bg-gradient-to-br ${star.gender === "boy" ? "from-cyan-500 to-transparent" : "from-pink-600/60 to-transparent"}`}
+              className={`absolute inset-0 opacity-10 bg-linear-to-br ${star.gender === "boy" ? "from-cyan-500 to-transparent" : "from-pink-600/60 to-transparent"}`}
             />
             <div className="absolute inset-0 flex items-center justify-center text-3xl grayscale opacity-30 group-hover:scale-110 transition-all duration-700">
               {star.gender === "boy" ? "👤" : "💃"}

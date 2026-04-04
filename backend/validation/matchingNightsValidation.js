@@ -14,6 +14,12 @@ const matchingNightsSchema = Joi.object({
     "number.max": "Beams kann maximal 10 sein",
     "any.required": "Beams ist ein Pflichfeld",
   }),
+  money: Joi.number().min(0).max(500000).required().messages({
+    "number.base": "Money muss eine Zahl sein",
+    "number.min": "Money kann nicht negativ sein",
+    "number.max": "Money darf nicht 500000€ überschreiten",
+    "any.required": "Money darf nicht leer sein",
+  }),
 });
 
 module.exports = { matchingNightsSchema };

@@ -15,7 +15,7 @@ import StarsPage from "./pages/StarPage";
 import MatchingHistory from "./pages/MatchingHistory";
 
 const Placeholder = ({ title }: { title: string }) => (
-  <div className="flex items-center justify-center h-64 border-2 border-dashed border-white/5 rounded-[2rem]">
+  <div className="flex items-center justify-center h-64 border-2 border-dashed border-white/5 rounded-4xl">
     <p className="text-white/20 font-black uppercase tracking-[0.5em]">
       {title} coming soon
     </p>
@@ -129,7 +129,7 @@ const App: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2, ease: "easeIn" }}
-              className="fixed inset-0 bg-white z-[9999] pointer-events-none"
+              className="fixed inset-0 bg-white z-9999 pointer-events-none"
             />
           )}
         </AnimatePresence>

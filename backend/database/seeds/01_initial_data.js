@@ -54,12 +54,12 @@ exports.seed = async function (knex) {
 
   const nights = await knex("matching_nights")
     .insert([
-      { week: 1, beams: 2 },
-      { week: 2, beams: 1 },
-      { week: 3, beams: 3 },
-      { week: 4, beams: 2 },
-      { week: 5, beams: 4 },
-      { week: 6, beams: 4 },
+      { week: 1, beams: 2, money: 200000 },
+      { week: 2, beams: 1, money: 150000 },
+      { week: 3, beams: 3, money: 150000 },
+      { week: 4, beams: 2, money: 150000 },
+      { week: 5, beams: 4, money: 100000 },
+      { week: 6, beams: 4, money: 100000 },
     ])
     .returning("*");
 
