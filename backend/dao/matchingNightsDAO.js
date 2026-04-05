@@ -33,8 +33,30 @@ async function getMatchingNightById(id) {
 }
 
 async function createMatchingNight(data) {
-  const [created] = await db("matching_nights").insert(data).returning("*");
-  return created;
+  const { week, beams, money, seating } = data;
+
+  return db.transaction(async (trx) => {
+    const [night] = await trx("matching_nights")
+      .insert({
+        week: week,
+        beams: beams,
+        money: money,
+      })
+      .returning("*");
+
+    if (seating && Object.keys(seating).length > 0) {
+      const picksToInsert = Object.entries(seating).map(([boyId, girlId]) => ({
+        matching_nights_id: night.id,
+        boys_id: boyId,
+        girls_id: girlId,
+      }));
+
+      await trx("matching_picks").insert(picksToInsert);
+    }
+
+    // Wir geben die Night inkl. der seating Info zurück für das Frontend
+    return { ...night, seating };
+  });
 }
 
 async function updateMatchingNight(id, data) {

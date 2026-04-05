@@ -23,15 +23,18 @@ async function getMatchingNightById(req, res, next) {
 
 async function createMatchingNight(req, res, next) {
   try {
-    const { week, beams } = req.body;
+    const { week, beams, money, seating } = req.body;
     if (!week) throw new Error("Wochen nummer muss angegeben werden");
 
     const created = await matchingNightsDAO.createMatchingNight({
       week,
       beams,
+      money,
+      seating,
     });
     res.status(201).json(created);
   } catch (error) {
+    console.error(error);
     next(error);
   }
 }

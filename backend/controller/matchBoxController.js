@@ -25,7 +25,11 @@ async function createMatchBox(req, res, next) {
     if (!girlId || !boyId)
       throw new Error("Teilnehmer und Teilnehmerin ID benötigt");
 
-    const created = await matchBoxDAO.createMatchBox({ girlId, boyId, result });
+    const created = await matchBoxDAO.createMatchBox({
+      girls_id: girlId,
+      boys_id: boyId,
+      result: result,
+    });
     res.status(201).json(created);
   } catch (error) {
     next(error);

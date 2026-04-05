@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Heatmap from "./components/Heatmap";
 import StarsPage from "./pages/StarPage";
 import MatchingHistory from "./pages/MatchingHistory";
+import AdminPage from "./pages/AdminPage";
 
 const Placeholder = ({ title }: { title: string }) => (
   <div className="flex items-center justify-center h-64 border-2 border-dashed border-white/5 rounded-4xl">
@@ -77,7 +78,7 @@ const AnimatedRoutes = ({
           path="/admin"
           element={
             <Dashboard>
-              <Placeholder title="Admin Terminal" />
+              <AdminPage />
             </Dashboard>
           }
         />
