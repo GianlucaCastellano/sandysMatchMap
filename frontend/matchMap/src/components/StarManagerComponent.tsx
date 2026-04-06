@@ -181,7 +181,6 @@ const StarManagerComponent: React.FC = () => {
                     </p>
                   </div>
 
-                  {/* DELETE BUTTON */}
                   <button
                     onClick={() => handleDelete(star.id, star.gender)}
                     className="absolute -top-2 -right-2 w-8 h-8 bg-rose-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-rose-500 shadow-xl"

@@ -7,9 +7,9 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
 
   const tabs = [
-    { id: "matrix", label: "The Matrix", path: "/dashboard" },
+    { id: "matrix", label: "Heatmap", path: "/dashboard" },
     { id: "stars", label: "Stars", path: "/stars" },
-    { id: "history", label: "History", path: "/history" },
+    { id: "history", label: "Matching Nights", path: "/history" },
     { id: "admin", label: "Admin", path: "/admin" },
   ];
 

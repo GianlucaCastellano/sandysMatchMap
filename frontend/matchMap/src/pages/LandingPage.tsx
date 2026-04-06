@@ -100,9 +100,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
           animate={{ opacity: 1, y: 0 }}
           className="absolute -top-32 flex flex-col items-center"
         >
-          <span className="text-[9px] tracking-[1em] uppercase text-white/20 mb-3">
-            Strategy Engine
-          </span>
           <h2 className="text-xl font-black italic tracking-widest text-transparent bg-clip-text bg-linear-to-r from-white via-white/40 to-white uppercase">
             Sandys<span className="text-pink-500">Matchmap</span>
           </h2>
@@ -132,7 +129,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
             animate={{ opacity: isReady ? 1 : 0.4 }}
             className="text-[10px] font-black tracking-[0.6em] uppercase text-cyan-400 mb-4"
           >
-            Potential Prize Pool
+            Aktueller Preispool
           </motion.p>
 
           <h3 className="text-[18vw] md:text-[12rem] font-black leading-none tracking-tighter italic flex items-center justify-center select-none">
@@ -175,7 +172,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                 >
                   <div className="absolute inset-0 bg-linear-to-r from-blue-600 via-purple-600 to-pink-500 translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500 ease-out" />
                   <span className="relative z-10 text-black group-hover:text-white font-black text-2xl uppercase italic tracking-[0.15em] transition-colors">
-                    Crack the Matrix
+                    Dashboard
                   </span>
                 </button>
 
@@ -183,7 +180,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                   onClick={onStart}
                   className="text-[9px] font-black tracking-[0.5em] uppercase text-white/30 hover:text-white transition-all border-b border-white/5 hover:border-white/20 pb-1"
                 >
-                  Enter Command Center
+                  Admin Center
                 </button>
               </motion.div>
             )}
