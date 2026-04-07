@@ -59,7 +59,7 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               {tabs.find((t) => t.id === activeTab)?.label || "The Matrix"}
             </h1>
             <p className="text-[10px] font-bold tracking-[0.4em] text-white/20 mt-2 uppercase italic">
-              Are You The One? // {activeTab} Mode
+              Are You The One? // {activeTab}
             </p>
           </div>
 
