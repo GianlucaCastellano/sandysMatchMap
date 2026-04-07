@@ -102,14 +102,14 @@ const StarsPage: React.FC = () => {
                 onClick={() => setSortBy("ageAsc")}
                 className={`p-2.5 rounded-xl transition-all flex items-center gap-1 ${sortBy === "ageAsc" ? "bg-cyan-500/20 text-cyan-400" : "text-white/30 hover:bg-white/5"}`}
               >
-                <span className="text-[10px] font-black italic">AGE</span>
+                <span className="text-[10px] font-black italic">ALTER</span>
                 <span className="text-xs">↑</span>
               </button>
               <button
                 onClick={() => setSortBy("ageDesc")}
                 className={`p-2.5 rounded-xl transition-all flex items-center gap-1 ${sortBy === "ageDesc" ? "bg-cyan-500/20 text-cyan-400" : "text-white/30 hover:bg-white/5"}`}
               >
-                <span className="text-[10px] font-black italic">AGE</span>
+                <span className="text-[10px] font-black italic">ALTER</span>
                 <span className="text-xs">↓</span>
               </button>
             </div>

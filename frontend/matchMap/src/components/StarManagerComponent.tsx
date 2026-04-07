@@ -91,7 +91,7 @@ const StarManagerComponent: React.FC = () => {
       {/* FORMULAR: ADD NEW STAR */}
       <section className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-10 backdrop-blur-md">
         <h2 className="text-2xl font-black italic uppercase mb-8 text-cyan-400">
-          Add New Candidate
+          Füge neuen Star hinzu
         </h2>
         <form
           onSubmit={handleAddStar}
@@ -141,7 +141,7 @@ const StarManagerComponent: React.FC = () => {
       {/* LISTE: ALL STARS */}
       <section className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-10 backdrop-blur-md">
         <div className="flex justify-between items-center mb-10">
-          <h2 className="text-3xl font-black italic uppercase">Current Cast</h2>
+          <h2 className="text-3xl font-black italic uppercase">Aktuelle Stars</h2>
           <span className="text-white/20 font-black uppercase text-xs tracking-widest">
             {stars.length} Members
           </span>

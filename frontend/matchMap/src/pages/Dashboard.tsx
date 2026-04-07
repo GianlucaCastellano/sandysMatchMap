@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [perfectMatches, setPerfectMatches] = useState<Number>(0)
 
   const tabs = [
     { id: "matrix", label: "Heatmap", path: "/dashboard" },

@@ -155,7 +155,7 @@ const NightProtocolComponent: React.FC = () => {
         <div className="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-md flex items-center justify-between">
           <div>
             <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">
-              Prize Pool
+              Preis Pool
             </p>
             <input
               type="number"
@@ -186,10 +186,10 @@ const NightProtocolComponent: React.FC = () => {
             </select>
           </div>
           <div className="flex gap-1">
-            {[...Array(3)].map((_, i) => (
+            {[...Array(10)].map((_, i) => (
               <div
                 key={i}
-                className={`w-1.5 h-8 rounded-full ${i < beams / 3 ? "bg-cyan-400 shadow-[0_0_10px_#22d3ee]" : "bg-white/10"}`}
+                className={`w-1.5 h-8 rounded-full ${i < beams / 1 ? "bg-cyan-400 shadow-[0_0_10px_#22d3ee]" : "bg-white/10"}`}
               />
             ))}
           </div>
@@ -200,15 +200,15 @@ const NightProtocolComponent: React.FC = () => {
         <div className="flex justify-between items-end mb-10">
           <div>
             <h2 className="text-3xl font-black italic uppercase text-white tracking-tighter">
-              Pairing Protocol
+              Zuweisung 
             </h2>
             <p className="text-[10px] text-white/40 uppercase tracking-widest mt-1">
-              Assign matches for the current week
+              Gib hier die Paar der letzten Matchin Night ein
             </p>
           </div>
           <div className="text-right">
             <p className="text-[10px] font-black uppercase tracking-widest text-pink-500">
-              {Object.keys(seating).length} / 10 Paired
+              {Object.keys(seating).length} / 10 gepaart
             </p>
           </div>
         </div>
@@ -263,7 +263,7 @@ const NightProtocolComponent: React.FC = () => {
                   <span
                     className={`text-[10px] font-black uppercase truncate w-16 text-right ${girl ? "text-pink-400" : "text-white/20"}`}
                   >
-                    {girl ? girl.name : "Empty"}
+                    {girl ? girl.name : "Leer"}
                   </span>
                 </div>
               </div>
@@ -275,7 +275,7 @@ const NightProtocolComponent: React.FC = () => {
           onClick={saveMatchingNight}
           className="w-full mt-12 py-5 bg-white text-black rounded-2xl font-black uppercase italic tracking-widest hover:bg-cyan-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.4)] transition-all"
         >
-          Inject Protocol
+          Absenden
         </button>
       </section>
 

@@ -66,7 +66,7 @@ const StarCard: React.FC<StarCardProps> = ({ star, onClick }) => {
           )}
         </div>
         <p className="text-[9px] font-bold uppercase tracking-[0.25em] text-white/20 mt-2">
-          {star.gender} contestant
+          {star.gender == "boy" && "Männlicher" || "Weiblicher"} Star
         </p>
       </div>
     </motion.div>

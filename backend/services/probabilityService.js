@@ -1,12 +1,9 @@
 const { permute } = require("../utils/permutationHelper");
 const boysDAO = require("../dao/boysDAO");
 const girlsDAO = require("../dao/girlsDAO");
-const matchingNightsDAO = require("../dao/matchingNightsDao");
-const matchboxDAO = require("../dao/matchboxDAO");
+const matchingNightsDAO = require("../dao/matchingNightsDAO");
+const matchboxDAO = require("../dao/matchBoxDAO");
 
-/**
- * Hilfsfunktion: Prüft, wie viele Übereinstimmungen eine Kombination mit den Picks einer Nacht hat.
- */
 const countMatchesInNight = (combination, nightSeating, boys) => {
   let matches = 0;
   boys.forEach((boy, index) => {
@@ -150,4 +147,8 @@ const calculateProbabilities = async () => {
   };
 };
 
-module.exports = { calculateProbabilities };
+const getPerfectMatches = async () => {
+
+}
+
+module.exports = { calculateProbabilities, getPerfectMatches };

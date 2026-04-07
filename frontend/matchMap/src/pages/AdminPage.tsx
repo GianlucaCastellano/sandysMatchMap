@@ -10,9 +10,9 @@ const AdminPage: React.FC = () => {
   );
 
   const tabs = [
-    { id: "nights", label: "Night Protocol", icon: "🌙" },
-    { id: "truth", label: "Truth Booth", icon: "🔍" },
-    { id: "stars", label: "Manage Stars", icon: "✨" },
+    { id: "nights", label: "Matching Nights", icon: "🌙" },
+    { id: "truth", label: "Match Box", icon: "📦" },
+    { id: "stars", label: "Stars", icon: "✨" },
   ];
 
   return (

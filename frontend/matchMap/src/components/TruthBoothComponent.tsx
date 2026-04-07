@@ -84,7 +84,7 @@ const TruthBoothComponent: React.FC = () => {
   if (loading)
     return (
       <div className="p-10 text-white/20 uppercase font-black italic">
-        Loading Truth Booth...
+        Loading Match Box...
       </div>
     );
 
@@ -93,15 +93,15 @@ const TruthBoothComponent: React.FC = () => {
       <div className="flex justify-between items-start mb-12">
         <div className="text-left">
           <h2 className="text-5xl font-black italic uppercase tracking-tighter text-white">
-            Truth Booth
+            Match Box
           </h2>
           <p className="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] mt-2">
-            Protocol 4-B: Confirm or Deny
+            Gib hier das Matchbox Paar ein
           </p>
         </div>
         <div className="bg-white/5 p-4 rounded-2xl border border-white/10">
           <p className="text-[8px] font-black text-white/40 uppercase mb-1 text-center">
-            Week
+            Woche
           </p>
           <input
             type="number"
@@ -129,12 +129,12 @@ const TruthBoothComponent: React.FC = () => {
               />
             ) : (
               <span className="text-white/20 font-black text-[10px] uppercase tracking-widest">
-                Select Boy
+                Junge
               </span>
             )}
           </div>
           <span className="text-sm font-black uppercase italic text-white/40 group-hover:text-white">
-            {selectedBoy ? selectedBoy.name : "Choose Boy"}
+            {selectedBoy ? selectedBoy.name : "Wähle Jungen aus"}
           </span>
         </button>
 
@@ -146,7 +146,7 @@ const TruthBoothComponent: React.FC = () => {
             <span
               className={`font-black uppercase italic text-xs tracking-widest ${selectedBoy && selectedGirl ? "text-cyan-400 animate-pulse" : "text-white/20"}`}
             >
-              {selectedBoy && selectedGirl ? "Scanning DNA" : "Select Pair"}
+              {selectedBoy && selectedGirl ? "Checke Match" : "Wähle Paar aus"}
             </span>
           </div>
         </div>
@@ -167,12 +167,12 @@ const TruthBoothComponent: React.FC = () => {
               />
             ) : (
               <span className="text-white/20 font-black text-[10px] uppercase tracking-widest">
-                Select Girl
+                Mächen
               </span>
             )}
           </div>
           <span className="text-sm font-black uppercase italic text-white/40 group-hover:text-white">
-            {selectedGirl ? selectedGirl.name : "Choose Girl"}
+            {selectedGirl ? selectedGirl.name : "Wähle Mädchen Aus"}
           </span>
         </button>
       </div>

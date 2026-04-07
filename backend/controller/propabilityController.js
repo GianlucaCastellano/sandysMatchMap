@@ -13,4 +13,18 @@ async function getProbabilities(req, res, next) {
   }
 }
 
-module.exports = { getProbabilities };
+async function getPerfectMatches(req,res,next) {
+  try{
+    const data = await getPerfectMatches();
+
+    res.json({
+      success: true,
+      data: data
+    });
+  }catch(error) {
+    next(error);
+
+  }
+}
+
+module.exports = { getProbabilities, getPerfectMatches };
