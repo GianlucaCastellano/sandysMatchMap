@@ -147,8 +147,33 @@ const calculateProbabilities = async () => {
   };
 };
 
-const getPerfectMatches = async () => {
+const get100PercentMatches = async () => {
+  const [boys, girls, matchingNights, matchboxResults] = await Promise.all([
+    boysDAO.getAllBoys(),
+    girlsDAO.getAllGirls(),
+    matchingNightsDAO.getAllMatchingNights(),
+    matchboxDAO.getAllMatchBoxes(),
+  ]);
 
-}
+  // Nur Matchbox-Ergebnisse mit result === true sind garantierte Matches
+  const perfectMatches = matchboxResults
+    .filter((mb) => mb.result === true)
+    .map((mb) => {
+      const boy = boys.find((b) => b.id === mb.boys_id);
+      const girl = girls.find((g) => g.id === mb.girls_id);
+      return {
+        boyId: mb.boys_id,
+        boyName: boy ? boy.name : "Unbekannt",
+        girlId: mb.girls_id,
+        girlName: girl ? girl.name : "Unbekannt",
+        probability: 100,
+      };
+    });
 
-module.exports = { calculateProbabilities, getPerfectMatches };
+  return {
+    perfectMatchCount: perfectMatches.length,
+    perfectMatches,
+  };
+};
+
+module.exports = { calculateProbabilities, get100PercentMatches };

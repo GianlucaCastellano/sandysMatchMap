@@ -5,7 +5,7 @@ import { useNavigate, useLocation, Link } from "react-router-dom";
 const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [perfectMatches, setPerfectMatches] = useState<Number>(0)
+  const [perfectMatches, setPerfectMatches] = useState<any>(0);
 
   const tabs = [
     { id: "matrix", label: "Heatmap", path: "/dashboard" },
@@ -13,6 +13,22 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     { id: "history", label: "Matching Nights", path: "/history" },
     { id: "admin", label: "Admin", path: "/admin" },
   ];
+
+  useEffect(() => {
+    const fetchPerfectMatches = async () => {
+      const response = await fetch(
+        "http://localhost:8080/probabilities/perfect",
+        {
+          method: "GET",
+        },
+      );
+
+      if (!response.ok) throw new Error("Failed to fetch Data");
+      const { data } = await response.json();
+      setPerfectMatches(data.perfectMatchCount);
+    };
+    fetchPerfectMatches();
+  }, []);
 
   const activeTab =
     tabs.find((t) => t.path === location.pathname)?.id || "matrix";
@@ -69,7 +85,9 @@ const Dashboard: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <p className="text-[9px] font-black text-white/30 uppercase tracking-[0.2em]">
                 Perfect Matches
               </p>
-              <p className="text-2xl font-black text-pink-500 italic">2 / 10</p>
+              <p className="text-2xl font-black text-pink-500 italic">
+                {perfectMatches} / 10
+              </p>
             </div>
             <div className="w-px h-10 bg-white/10" />
             <button className="bg-white text-black px-8 py-3 rounded-lg font-black uppercase italic tracking-tighter hover:bg-cyan-400 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.1)]">

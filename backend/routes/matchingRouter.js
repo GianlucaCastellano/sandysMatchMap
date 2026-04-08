@@ -3,5 +3,5 @@ const { getProbabilities, getPerfectMatches } = require("../controller/propabili
 const router = express.Router();
 
 router.get("/calculate", getProbabilities);
-//router.get("/perfect", getPerfectMatches);
+router.get("/perfect", getPerfectMatches);
 module.exports = router;

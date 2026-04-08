@@ -1,4 +1,7 @@
-const { calculateProbabilities } = require("../services/probabilityService");
+const {
+  calculateProbabilities,
+  get100PercentMatches,
+} = require("../services/probabilityService");
 
 async function getProbabilities(req, res, next) {
   try {
@@ -13,17 +16,16 @@ async function getProbabilities(req, res, next) {
   }
 }
 
-async function getPerfectMatches(req,res,next) {
-  try{
-    const data = await getPerfectMatches();
+async function getPerfectMatches(req, res, next) {
+  try {
+    const data = await get100PercentMatches();
 
     res.json({
       success: true,
-      data: data
+      data: data,
     });
-  }catch(error) {
+  } catch (error) {
     next(error);
-
   }
 }
 
