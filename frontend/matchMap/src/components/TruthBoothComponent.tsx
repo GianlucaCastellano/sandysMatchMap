@@ -50,7 +50,6 @@ const TruthBoothComponent: React.FC = () => {
       return;
     }
 
-  
     const payload = {
       week: Number(week),
       boyId: selectedBoy.id,
@@ -89,7 +88,7 @@ const TruthBoothComponent: React.FC = () => {
     );
 
   return (
-    <section className="max-w-4xl mx-auto bg-white/[0.02] border border-white/5 rounded-[3rem] p-12 backdrop-blur-xl relative">
+    <section className="max-w-4xl mx-auto bg-white-2 border border-white/5 rounded-[3rem] p-12 backdrop-blur-xl relative">
       <div className="flex justify-between items-start mb-12">
         <div className="text-left">
           <h2 className="text-5xl font-black italic uppercase tracking-tighter text-white">
@@ -186,9 +185,9 @@ const TruthBoothComponent: React.FC = () => {
         </button>
         <button
           onClick={() => handleSaveResult(true)}
-          className="flex-1 max-w-[220px] py-6 bg-emerald-600 text-white rounded-3xl font-black uppercase italic hover:bg-emerald-500 transition-all shadow-[0_10px_40px_rgba(5,150,105,0.3)] active:scale-95"
+          className="flex-1 max-w-55 py-6 bg-emerald-600 text-white rounded-3xl font-black uppercase italic hover:bg-emerald-500 transition-all shadow-[0_10px_40px_rgba(5,150,105,0.3)] active:scale-95"
         >
-          Perfect Match
+          Perfect Match 
         </button>
       </div>
 

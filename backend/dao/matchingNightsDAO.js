@@ -54,7 +54,6 @@ async function createMatchingNight(data) {
       await trx("matching_picks").insert(picksToInsert);
     }
 
-    // Wir geben die Night inkl. der seating Info zurück für das Frontend
     return { ...night, seating };
   });
 }

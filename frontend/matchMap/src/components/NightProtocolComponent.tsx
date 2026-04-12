@@ -15,7 +15,7 @@ const NightProtocolComponent: React.FC = () => {
 
   const [week, setWeek] = useState(1);
   const [beams, setBeams] = useState(0);
-  const [money, setMoney] = useState(200000);
+  const [money, setMoney] = useState<number | "">(200000);
   const [seating, setSeating] = useState<Record<string, string>>({});
 
   const [activeBoyForSelection, setActiveBoyForSelection] = useState<
@@ -117,7 +117,7 @@ const NightProtocolComponent: React.FC = () => {
           alt={star.name}
         />
       ) : (
-        <div className="flex flex-col items-center justify-center w-full h-full bg-gradient-to-br from-white/10 to-transparent">
+        <div className="flex flex-col items-center justify-center w-full h-full bg-linear-to-br from-white/10 to-transparent">
           <span className="text-[10px] font-black text-white/40 uppercase tracking-tighter">
             {star?.name?.substring(0, 2) || "??"}
           </span>
@@ -136,7 +136,7 @@ const NightProtocolComponent: React.FC = () => {
   return (
     <div className="space-y-10 p-6 relative">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
-        <div className="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-md flex items-center justify-between">
+        <div className="bg-white/5 border border-white/10 p-6 rounded-4xl backdrop-blur-md flex items-center justify-between">
           <div>
             <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">
               Night
@@ -160,8 +160,12 @@ const NightProtocolComponent: React.FC = () => {
             <input
               type="number"
               value={money}
-              onChange={(e) => setMoney(Number(e.target.value))}
-              className="bg-transparent text-4xl font-black text-yellow-500 outline-none w-40"
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value === "") return setMoney("");
+                setMoney(Number(value));
+              }}
+              className="no-spinner bg-transparent text-4xl font-black text-yellow-500 outline-none w-40"
             />
           </div>
           <div className="h-12 w-12 rounded-full border border-yellow-500/20 text-yellow-500 flex items-center justify-center font-black">
@@ -200,7 +204,7 @@ const NightProtocolComponent: React.FC = () => {
         <div className="flex justify-between items-end mb-10">
           <div>
             <h2 className="text-3xl font-black italic uppercase text-white tracking-tighter">
-              Zuweisung 
+              Zuweisung
             </h2>
             <p className="text-[10px] text-white/40 uppercase tracking-widest mt-1">
               Gib hier die Paar der letzten Matchin Night ein

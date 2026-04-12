@@ -22,7 +22,13 @@ async function getGirlById(req, res, next) {
 
 async function createGirl(req, res, next) {
   try {
-    const newGirl = await girlsDao.createGirl(req.body);
+    const { name, age } = req.body;
+
+    let imageUrl = null;
+    if (req.file) {
+      imageUrl = `http://localhost:8080/uploads/profiles/${req.file.filename}`;
+    }
+    const newGirl = await girlsDao.createGirl(name, age, imageUrl);
     res.status(201).json(newGirl);
   } catch (error) {
     next(error);

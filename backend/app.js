@@ -13,6 +13,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(Path2D.join(__dirname, "uploads")));
 
 app.use("/", routes);
 

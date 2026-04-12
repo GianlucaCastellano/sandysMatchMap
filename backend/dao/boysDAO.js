@@ -8,8 +8,10 @@ async function getBoyById(id) {
   return db("boys").where({ id }).first();
 }
 
-async function createBoy(boy) {
-  const [newBoy] = await db("boys").insert(boy).returning("*");
+async function createBoy(name, age, image_url) {
+  const [newBoy] = await db("boys")
+    .insert({ name, age, image_url, active: true })
+    .returning("*");
   return newBoy;
 }
 

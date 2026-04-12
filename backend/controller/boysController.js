@@ -21,7 +21,13 @@ async function getBoyById(req, res, next) {
 
 async function createBoy(req, res, next) {
   try {
-    const newBoy = await boysDao.createBoy(req.body);
+    const { name, age } = req.body;
+
+    let imageUrl = null;
+    if (req.file) {
+      imageUrl = `http://localhost:8080/uploads/profiles/${req.file.filename}`;
+    }
+    const newBoy = await boysDao.createBoy(name, age, imageUrl);
     res.status(201).json(newBoy);
   } catch (error) {
     next(error);
