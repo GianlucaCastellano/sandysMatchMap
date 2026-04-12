@@ -53,12 +53,12 @@ const HeatmapCell: React.FC<HeatmapCellProps> = ({
         <motion.div
           animate={{ x: ["-150%", "150%"] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -skew-x-24 pointer-events-none"
+          className="absolute inset-0 bg-linear-to-r from-transparent via-white/50 to-transparent -skew-x-24 pointer-events-none"
         />
       )}
 
       {displayProb >= 70 && !isMatch && (
-        <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-white/20 to-transparent pointer-events-none" />
       )}
     </motion.td>
   );

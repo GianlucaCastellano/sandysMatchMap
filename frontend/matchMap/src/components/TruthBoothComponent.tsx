@@ -179,7 +179,7 @@ const TruthBoothComponent: React.FC = () => {
       <div className="mt-16 flex justify-center gap-6">
         <button
           onClick={() => handleSaveResult(false)}
-          className="flex-1 max-w-[220px] py-6 bg-rose-600 text-white rounded-3xl font-black uppercase italic hover:bg-rose-500 transition-all shadow-[0_10px_40px_rgba(225,29,72,0.3)] active:scale-95"
+          className="flex-1 max-w-55 py-6 bg-rose-600 text-white rounded-3xl font-black uppercase italic hover:bg-rose-500 transition-all shadow-[0_10px_40px_rgba(225,29,72,0.3)] active:scale-95"
         >
           No Match
         </button>
@@ -187,7 +187,7 @@ const TruthBoothComponent: React.FC = () => {
           onClick={() => handleSaveResult(true)}
           className="flex-1 max-w-55 py-6 bg-emerald-600 text-white rounded-3xl font-black uppercase italic hover:bg-emerald-500 transition-all shadow-[0_10px_40px_rgba(5,150,105,0.3)] active:scale-95"
         >
-          Perfect Match 
+          Perfect Match
         </button>
       </div>
 
@@ -199,13 +199,13 @@ const TruthBoothComponent: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectorOpen({ ...selectorOpen, open: false })}
-              className="fixed inset-0 bg-black/90 backdrop-blur-xl z-[999]"
+              className="fixed inset-0 bg-black/90 backdrop-blur-xl z-999"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl p-10 z-[1000] bg-[#0a0a0c] border border-white/10 rounded-[4rem] shadow-2xl"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl p-10 z-1000 bg-[#0a0a0c] border border-white/10 rounded-[4rem] shadow-2xl"
             >
               <h3 className="text-3xl font-black italic uppercase text-white mb-8 text-center tracking-tighter">
                 Select {selectorOpen.type === "boy" ? "a Boy" : "a Girl"}

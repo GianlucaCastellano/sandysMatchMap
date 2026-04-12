@@ -152,7 +152,7 @@ const NightProtocolComponent: React.FC = () => {
             W
           </div>
         </div>
-        <div className="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-md flex items-center justify-between">
+        <div className="bg-white/5 border border-white/10 p-6 rounded-4xl backdrop-blur-md flex items-center justify-between">
           <div>
             <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">
               Preis Pool
@@ -172,7 +172,7 @@ const NightProtocolComponent: React.FC = () => {
             €
           </div>
         </div>
-        <div className="bg-white/5 border border-white/10 p-6 rounded-[2rem] backdrop-blur-md flex items-center justify-between">
+        <div className="bg-white/5 border border-white/10 p-6 rounded-4xl backdrop-blur-md flex items-center justify-between">
           <div>
             <p className="text-[10px] font-black text-cyan-400 uppercase tracking-widest">
               Beams
@@ -200,7 +200,7 @@ const NightProtocolComponent: React.FC = () => {
         </div>
       </div>
 
-      <section className="bg-white/[0.02] border border-white/5 rounded-[3rem] p-10 backdrop-blur-md relative z-10">
+      <section className="bg-white/2 border border-white/5 rounded-[3rem] p-10 backdrop-blur-md relative z-10">
         <div className="flex justify-between items-end mb-10">
           <div>
             <h2 className="text-3xl font-black italic uppercase text-white tracking-tighter">
@@ -224,12 +224,12 @@ const NightProtocolComponent: React.FC = () => {
             return (
               <div
                 key={boy.id}
-                className="relative bg-black/40 border border-white/5 rounded-[2rem] p-4 flex flex-col items-center gap-4 hover:border-white/10 transition-colors"
+                className="relative bg-black/40 border border-white/5 rounded-4xl p-4 flex flex-col items-center gap-4 hover:border-white/10 transition-colors"
               >
                 <div className="w-full flex justify-between items-center">
                   <Avatar star={boy} color="border-blue-500/30" />
                   <div className="flex-1 flex flex-col items-center px-2">
-                    <div className="h-[2px] w-full bg-gradient-to-r from-blue-500/20 via-white/10 to-pink-500/20 rounded-full" />
+                    <div className="h-0.5 w-full bg-linear-to-r from-blue-500/20 via-white/10 to-pink-500/20 rounded-full" />
                     <span className="text-[8px] font-black text-white/20 uppercase mt-1">
                       Match
                     </span>
@@ -291,13 +291,13 @@ const NightProtocolComponent: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveBoyForSelection(null)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100]"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-100"
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl bg-[#0a0a0c] border border-white/10 rounded-[3rem] p-8 z-[110] shadow-2xl"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl bg-[#0a0a0c] border border-white/10 rounded-[3rem] p-8 z-110 shadow-2xl"
             >
               <div className="text-center mb-8">
                 <p className="text-[10px] font-black text-pink-500 uppercase tracking-[0.5em]">

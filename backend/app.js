@@ -2,6 +2,7 @@ const express = require("express");
 const routes = require("./routes/allRoutes");
 const cors = require("cors");
 const errorHandler = require("./middleware/errorHandler");
+const path = require("path");
 
 const app = express();
 const corsOptions = {
@@ -13,7 +14,7 @@ const corsOptions = {
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
-app.use("/uploads", express.static(Path2D.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "pictures")));
 
 app.use("/", routes);
 
