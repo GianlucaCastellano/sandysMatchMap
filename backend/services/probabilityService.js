@@ -71,7 +71,7 @@ const calculateProbabilities = async () => {
     }
     if (!isPossible) continue;
 
-    // Szenario ist valide
+
     validCombinationsCount++;
     girlPermutation.forEach((girlId, boyIndex) => {
       const boyId = boys[boyIndex].id;
