@@ -15,7 +15,6 @@ const countMatchesInNight = (combination, nightSeating, boys) => {
 };
 
 const calculateProbabilities = async () => {
-  // 1. Daten laden
   const [boys, girls, matchingNights, matchboxResults] = await Promise.all([
     boysDAO.getAllBoys(),
     girlsDAO.getAllGirls(),
@@ -31,18 +30,15 @@ const calculateProbabilities = async () => {
   let validCombinationsCount = 0;
   const pairCounts = {};
 
-  // pairCounts initialisieren
   boys.forEach((boy) => {
     girlIds.forEach((girlId) => {
       pairCounts[`${boy.id}:${girlId}`] = 0;
     });
   });
 
-  // 2. Alle Permutationen durchlaufen
   for (const girlPermutation of permute([...girlIds])) {
     let isPossible = true;
 
-    // --- FILTER A: MATCHBOX ---
     for (const mb of matchboxResults) {
       const boyIndex = boys.findIndex((b) => b.id === mb.boys_id);
       if (boyIndex === -1) continue;
@@ -62,10 +58,9 @@ const calculateProbabilities = async () => {
     }
     if (!isPossible) continue;
 
-    // --- FILTER B: MATCHING NIGHTS ---
     for (const night of matchingNights) {
       const hits = countMatchesInNight(girlPermutation, night.seating, boys);
-      // Fallback für beams/lights
+
       const actualBeams =
         night.beams !== undefined ? night.beams : night.lights;
 
@@ -84,18 +79,15 @@ const calculateProbabilities = async () => {
     });
   }
 
-  // 3. Validierung
   if (validCombinationsCount === 0) {
     throw new Error(
       "Widerspruch in den Daten! Es gibt kein mögliches Szenario.",
     );
   }
 
-  // 4. FORMATIERUNG FÜR FRONTEND
   const boysView = {};
   const girlsView = {};
 
-  // Sicher initialisieren
   boys.forEach((b) => {
     boysView[b.id] = { name: b.name, matches: [] };
   });
@@ -130,7 +122,6 @@ const calculateProbabilities = async () => {
     }
   }
 
-  // Sortieren
   const sortByProb = (a, b) => b.probability - a.probability;
   Object.values(boysView).forEach((b) => b.matches.sort(sortByProb));
   Object.values(girlsView).forEach((g) => g.matches.sort(sortByProb));
@@ -155,7 +146,6 @@ const get100PercentMatches = async () => {
     matchboxDAO.getAllMatchBoxes(),
   ]);
 
-  // Nur Matchbox-Ergebnisse mit result === true sind garantierte Matches
   const perfectMatches = matchboxResults
     .filter((mb) => mb.result === true)
     .map((mb) => {
